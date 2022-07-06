@@ -1,0 +1,2355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="TechyDevs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RestosIDF - Annuraire des restaurants d'Ile de France</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam:wght@100;300;400;500;600;700;800&amp;display=swap"
+          rel="stylesheet">
+
+    <!-- Template CSS Files -->
+    <link href="{{ url_for('static', filename = 'css/bootstrap-icons.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/line-awesome.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/owl.carousel.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/owl.theme.default.min.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/animated-headline.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/jquery-ui.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/jquery.fancybox.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/chosen.min.css') }}"/>
+    <link href="{{ url_for('static', filename = 'css/magnific-popup.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'css/nouislider.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'css/uppy.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'css/litepicker.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'css/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'css/style.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme CSS files as mentioned below (and change the theme property of the plugin) -->
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- important mandatory libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js" type="text/javascript"></script>
+
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme JS files as mentioned below (and change the theme property of the plugin) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+
+    <!-- optionally if you need translation for your language then include locale file as mentioned below (replace LANG.js with your own locale file) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
+</head>
+<body>
+<!-- start per-loader -->
+<div class="loader-container">
+    <div class="loader-ripple">
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- end per-loader -->
+
+<!-- ================================
+            START HEADER AREA
+================================= -->
+<header class="header-area position-relative top-auto bg-dark">
+    <div class="header-top-bar bg-dark-opacity py-2 padding-right-30px padding-left-30px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 d-flex align-items-center header-top-info font-size-14 font-weight-medium">
+                    <p class="login-and-signup-wrap">
+                        <a href="#" data-toggle="modal" data-target="#loginModal">
+                            <span class="mr-1 la la-sign-in"></span>Se connecter
+                        </a>
+                        <span class="or-text px-2">Ou</span>
+                        <a href="#" data-toggle="modal" data-target="#signUpModal">
+                            <span class="mr-1 la la-user-plus"></span>S'inscrire
+                        </a>
+                    </p>
+                </div><!-- end col-lg-6 -->
+                <div class="col-lg-6 d-flex align-items-center justify-content-end header-top-info">
+                    <span class="mr-2 text-white font-weight-semi-bold font-size-14">Suivez nous sur:</span>
+                    <ul class="social-profile social-profile-colored">
+                        <li><a href="#" class="facebook-bg"><i class="lab la-facebook-f"></i></a></li>
+                        <li><a href="#" class="twitter-bg"><i class="lab la-twitter"></i></a></li>
+                        <li><a href="#" class="instagram-bg"><i class="lab la-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div><!-- end row -->
+        </div><!-- end container-fluid -->
+    </div><!-- end header-top-bar -->
+    <div class="header-menu-wrapper padding-right-30px padding-left-30px">
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="menu-full-width">
+                        <div class="logo">
+                            <a href="index-2.html"><img
+                                    src="{{ url_for('static', filename = 'images/logo-white.png') }}" alt="logo"></a>
+                            <div class="d-flex align-items-center">
+                                <div class="menu-toggle">
+                                    <span class="menu__bar"></span>
+                                    <span class="menu__bar"></span>
+                                    <span class="menu__bar"></span>
+                                </div><!-- end menu-toggle -->
+                            </div>
+                        </div><!-- end logo -->
+                        <div class="main-menu-content main-menu-content-2">
+                            <nav class="main-menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Acceuil </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">A propos </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Ajouter votre restaurant </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Contact </a>
+
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div><!-- end main-menu-content -->
+                        <div class="quick-search-form d-flex align-items-center">
+                            <form action="#" class="w-100">
+                                <div class="header-search position-relative">
+                                    <i class="la la-search form-icon"></i>
+                                    <input type="search" placeholder="Tappez le nom de restaurant souhaité?">
+                                </div>
+                            </form>
+                        </div><!-- end quick-search-form -->
+
+                    </div><!-- end menu-full-width -->
+                </div><!-- end col-lg-12 -->
+            </div><!-- end row -->
+        </div><!-- end container-fluid -->
+    </div><!-- end header-menu-wrapper -->
+</header>
+<!-- ================================
+         END HEADER AREA
+================================= -->
+
+<!-- ================================
+    START BREADCRUMB AREA
+================================= -->
+<section class="breadcrumb-area bg-gradient-gray py-4">
+    <div class="container-fluid padding-right-40px padding-left-40px">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between">
+                    <div class="section-heading">
+                        <h2 class="sec__title font-size-26 mb-0">Envie d'un resto?</h2>
+                    </div>
+                    <ul class="list-items bread-list bread-list-2 ">
+                        <li><a href="index-2.html">Acceuil</a></li>
+
+                    </ul>
+                </div><!-- end breadcrumb-content -->
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+    </div><!-- end container-fluid -->
+</section><!-- end breadcrumb-area -->
+<!-- ================================
+    END BREADCRUMB AREA
+================================= -->
+
+<!-- ================================
+       START FULL SCREEN AREA
+================================= -->
+<section class="full-screen-container d-flex">
+    <div class="w-50 card-area">
+        <div class="filter-bar-wrap padding-left-30px padding-right-30px">
+            <div class="filter-bar d-flex flex-wrap justify-content-between align-items-center shadow-none rounded-0 border-0 px-0">
+                <p class="result-text font-weight-medium">Affichage de 1 à 6 restaurant (Total
+                    = {{ nbRestaurants }})</p>
+            </div><!-- end filter-bar -->
+            <div class="section-block"></div>
+            <form method="post" class="form-box row py-4">
+                <div class="col-lg-6 input-box">
+                    <label class="label-text">Recherche par commune</label>
+                    <div class="form-group user-chosen-select-container">
+                        <select class="user-chosen-select">
+                            <option value="0">Sélectionner une commune</option>
+  <option value="1">La Trétoire</option>
+  <option value="2">Itteville</option>
+  <option value="3">Orsonville</option>
+  <option value="4">Boissettes</option>
+  <option value="5">Villennes-sur-Seine</option>
+  <option value="6">Saint-Clair-sur-Epte</option>
+  <option value="7">Eaubonne</option>
+  <option value="8">Saint-Brice-sous-Forêt</option>
+  <option value="9">Vaucresson</option>
+  <option value="10">Longueville</option>
+  <option value="11">Garentreville</option>
+  <option value="12">Janvry</option>
+  <option value="13">Crouy-sur-Ourcq</option>
+  <option value="14">Videlles</option>
+  <option value="15">Melz-sur-Seine</option>
+  <option value="16">Mormant</option>
+  <option value="17">Chauffour-lès-Étréchy</option>
+  <option value="18">Le Perreux-sur-Marne</option>
+  <option value="19">Remauville</option>
+  <option value="20">Le Mérévillois</option>
+  <option value="21">Boullay-les-Troux</option>
+  <option value="22">Servon</option>
+  <option value="23">Chalo-Saint-Mars</option>
+  <option value="24">Fresnes</option>
+  <option value="25">Bobigny</option>
+  <option value="26">Guérard</option>
+  <option value="27">Paris 7e  Arrondissement</option>
+  <option value="28">Fontenailles</option>
+  <option value="29">Le Bellay-en-Vexin</option>
+  <option value="30">Saint-Cyr-la-Rivière</option>
+  <option value="31">Villebéon</option>
+  <option value="32">Longuesse</option>
+  <option value="33">Bazemont</option>
+  <option value="34">Charmentray</option>
+  <option value="35">Ormoy</option>
+  <option value="36">Aigremont</option>
+  <option value="37">Marolles-en-Beauce</option>
+  <option value="38">Lévis-Saint-Nom</option>
+  <option value="39">Fublaines</option>
+  <option value="40">Viarmes</option>
+  <option value="41">Boissy-Saint-Léger</option>
+  <option value="42">Bois-d'Arcy</option>
+  <option value="43">Gastins</option>
+  <option value="44">Lommoye</option>
+  <option value="45">Égly</option>
+  <option value="46">La Celle-les-Bordes</option>
+  <option value="47">Boinville-le-Gaillard</option>
+  <option value="48">Chennevières-sur-Marne</option>
+  <option value="49">Dormelles</option>
+  <option value="50">Beauvoir</option>
+  <option value="51">Courquetaine</option>
+  <option value="52">Corbeil-Essonnes</option>
+  <option value="53">Le Bourget</option>
+  <option value="54">Méry-sur-Oise</option>
+  <option value="55">Autouillet</option>
+  <option value="56">Courtacon</option>
+  <option value="57">Bussy-Saint-Georges</option>
+  <option value="58">Villiers-en-Bière</option>
+  <option value="59">Signy-Signets</option>
+  <option value="60">Boutervilliers</option>
+  <option value="61">Le Plessis-Placy</option>
+  <option value="62">Voisenon</option>
+  <option value="63">Égreville</option>
+  <option value="64">Férolles-Attilly</option>
+  <option value="65">Bombon</option>
+  <option value="66">Gagny</option>
+  <option value="67">Saint-Lambert</option>
+  <option value="68">Saint-Nom-la-Bretèche</option>
+  <option value="69">Villevaudé</option>
+  <option value="70">Romainville</option>
+  <option value="71">Théméricourt</option>
+  <option value="72">Noisy-sur-École</option>
+  <option value="73">Bréançon</option>
+  <option value="74">Saint-Loup-de-Naud</option>
+  <option value="75">Longperrier</option>
+  <option value="76">Fosses</option>
+  <option value="77">Boissy-Mauvoisin</option>
+  <option value="78">Dammartin-en-Goële</option>
+  <option value="79">Saint-Fargeau-Ponthierry</option>
+  <option value="80">Villette</option>
+  <option value="81">Liverdy-en-Brie</option>
+  <option value="82">Versailles</option>
+  <option value="83">Darvault</option>
+  <option value="84">Les Loges-en-Josas</option>
+  <option value="85">Champagne-sur-Oise</option>
+  <option value="86">Menucourt</option>
+  <option value="87">Favières</option>
+  <option value="88">Cernay-la-Ville</option>
+  <option value="89">Prunay-en-Yvelines</option>
+  <option value="90">Diant</option>
+  <option value="91">Saint-Martin-du-Tertre</option>
+  <option value="92">Bougival</option>
+  <option value="93">Bannost-Villegagnon</option>
+  <option value="94">Lésigny</option>
+  <option value="95">Jouy-en-Josas</option>
+  <option value="96">Limeil-Brévannes</option>
+  <option value="97">Coignières</option>
+  <option value="98">Nanterre</option>
+  <option value="99">Les Alluets-le-Roi</option>
+  <option value="100">Génicourt</option>
+  <option value="101">Bray-et-Lû</option>
+  <option value="102">Soisy-sur-École</option>
+  <option value="103">Dammarie-les-Lys</option>
+  <option value="104">Brunoy</option>
+  <option value="105">Le Kremlin-Bicêtre</option>
+  <option value="106">Flexanville</option>
+  <option value="107">Juilly</option>
+  <option value="108">Châtenay-en-France</option>
+  <option value="109">Croissy-sur-Seine</option>
+  <option value="110">Ivry-sur-Seine</option>
+  <option value="111">Chenou</option>
+  <option value="112">Échouboulains</option>
+  <option value="113">Goussonville</option>
+  <option value="114">La Villeneuve-en-Chevrie</option>
+  <option value="115">Vaux-sur-Lunain</option>
+  <option value="116">Verneuil-sur-Seine</option>
+  <option value="117">Lizy-sur-Ourcq</option>
+  <option value="118">Montfermeil</option>
+  <option value="119">Neuilly-en-Vexin</option>
+  <option value="120">La Ferté-Alais</option>
+  <option value="121">Bougligny</option>
+  <option value="122">Mittainville</option>
+  <option value="123">Lesches</option>
+  <option value="124">Châtenay-Malabry</option>
+  <option value="125">Milon-la-Chapelle</option>
+  <option value="126">Valenton</option>
+  <option value="127">Boinvilliers</option>
+  <option value="128">Luisetaines</option>
+  <option value="129">Andilly</option>
+  <option value="130">Les Molières</option>
+  <option value="131">Aulnay-sur-Mauldre</option>
+  <option value="132">Melun</option>
+  <option value="133">Paris 16e  Arrondissement</option>
+  <option value="134">Passy-sur-Seine</option>
+  <option value="135">Vaudherland</option>
+  <option value="136">La Falaise</option>
+  <option value="137">Chevrainvilliers</option>
+  <option value="138">Villemomble</option>
+  <option value="139">Asnières-sur-Oise</option>
+  <option value="140">Corbreuse</option>
+  <option value="141">Paris 10e  Arrondissement</option>
+  <option value="142">La Chapelle-Saint-Sulpice</option>
+  <option value="143">Freneuse</option>
+  <option value="144">Maincy</option>
+  <option value="145">Paris 8e  Arrondissement</option>
+  <option value="146">Montévrain</option>
+  <option value="147">Guercheville</option>
+  <option value="148">Flagy</option>
+  <option value="149">Les Chapelles-Bourbon</option>
+  <option value="150">Combs-la-Ville</option>
+  <option value="151">Boisdon</option>
+  <option value="152">Torfou</option>
+  <option value="153">Fontaine-le-Port</option>
+  <option value="154">Dugny</option>
+  <option value="155">Bazainville</option>
+  <option value="156">Pontcarré</option>
+  <option value="157">Vimpelles</option>
+  <option value="158">Taverny</option>
+  <option value="159">Coulommiers</option>
+  <option value="160">Boigneville</option>
+  <option value="161">Nonville</option>
+  <option value="162">Nemours</option>
+  <option value="163">Orcemont</option>
+  <option value="164">Favrieux</option>
+  <option value="165">Dannemarie</option>
+  <option value="166">Saint-Rémy-lès-Chevreuse</option>
+  <option value="167">Fontenay-le-Vicomte</option>
+  <option value="168">Aubepierre-Ozouer-le-Repos</option>
+  <option value="169">Avrainville</option>
+  <option value="170">Treuzy-Levelay</option>
+  <option value="171">Chanteloup-les-Vignes</option>
+  <option value="172">Saint-Martin-de-Bréthencourt</option>
+  <option value="173">Plaisir</option>
+  <option value="174">Auffargis</option>
+  <option value="175">Saint-Gratien</option>
+  <option value="176">Chavenay</option>
+  <option value="177">Janville-sur-Juine</option>
+  <option value="178">Vert-le-Petit</option>
+  <option value="179">Sailly</option>
+  <option value="180">Bourg-la-Reine</option>
+  <option value="181">Vicq</option>
+  <option value="182">Montolivet</option>
+  <option value="183">Boissy-l'Aillerie</option>
+  <option value="184">Neauphle-le-Château</option>
+  <option value="185">Grez-sur-Loing</option>
+  <option value="186">Belloy-en-France</option>
+  <option value="187">Villecresnes</option>
+  <option value="188">Frépillon</option>
+  <option value="189">Ermont</option>
+  <option value="190">Saint-Cyr-l'École</option>
+  <option value="191">Villeneuve-le-Comte</option>
+  <option value="192">Ablis</option>
+  <option value="193">Briis-sous-Forges</option>
+  <option value="194">Trilport</option>
+  <option value="195">La Tombe</option>
+  <option value="196">Le Chesnay-Rocquencourt</option>
+  <option value="197">Houdan</option>
+  <option value="198">Le Blanc-Mesnil</option>
+  <option value="199">Le Port-Marly</option>
+  <option value="200">Bouleurs</option>
+  <option value="201">Saint-Mesmes</option>
+  <option value="202">Coutevroult</option>
+  <option value="203">Boutigny</option>
+  <option value="204">Les Mureaux</option>
+  <option value="205">Roinvilliers</option>
+  <option value="206">Nointel</option>
+  <option value="207">Achères-la-Forêt</option>
+  <option value="208">Jaignes</option>
+  <option value="209">Le Mesnil-Amelot</option>
+  <option value="210">Allainville</option>
+  <option value="211">Villebon-sur-Yvette</option>
+  <option value="212">Maudétour-en-Vexin</option>
+  <option value="213">Louvres</option>
+  <option value="214">Nozay</option>
+  <option value="215">Issy-les-Moulineaux</option>
+  <option value="216">Saint-Hilarion</option>
+  <option value="217">Chatignonville</option>
+  <option value="218">Clos-Fontaine</option>
+  <option value="219">Villiers-Adam</option>
+  <option value="220">Tigeaux</option>
+  <option value="221">Saint-Sauveur-lès-Bray</option>
+  <option value="222">Breux-Jouy</option>
+  <option value="223">La Frette-sur-Seine</option>
+  <option value="224">Luzancy</option>
+  <option value="225">Provins</option>
+  <option value="226">Maurecourt</option>
+  <option value="227">Morangis</option>
+  <option value="228">Sartrouville</option>
+  <option value="229">Jossigny</option>
+  <option value="230">La Hauteville</option>
+  <option value="231">Mareil-le-Guyon</option>
+  <option value="232">Amponville</option>
+  <option value="233">Butry-sur-Oise</option>
+  <option value="234">Herblay-sur-Seine</option>
+  <option value="235">Triel-sur-Seine</option>
+  <option value="236">Lardy</option>
+  <option value="237">Le Heaulme</option>
+  <option value="238">Angerville</option>
+  <option value="239">Montrouge</option>
+  <option value="240">Étrépilly</option>
+  <option value="241">Bois-Herpin</option>
+  <option value="242">Cormeilles-en-Parisis</option>
+  <option value="243">Saint-Thibault-des-Vignes</option>
+  <option value="244">Puteaux</option>
+  <option value="245">Saint-Witz</option>
+  <option value="246">Magnanville</option>
+  <option value="247">Boissise-la-Bertrand</option>
+  <option value="248">Maffliers</option>
+  <option value="249">Choisy-le-Roi</option>
+  <option value="250">Morsang-sur-Seine</option>
+  <option value="251">Élancourt</option>
+  <option value="252">Rochefort-en-Yvelines</option>
+  <option value="253">Reuil-en-Brie</option>
+  <option value="254">Paris 13e  Arrondissement</option>
+  <option value="255">Paris 18e  Arrondissement</option>
+  <option value="256">Paris 11e  Arrondissement</option>
+  <option value="257">Guermantes</option>
+  <option value="258">Prunay-sur-Essonne</option>
+  <option value="259">Fontenay-sous-Bois</option>
+  <option value="260">Margency</option>
+  <option value="261">Sannois</option>
+  <option value="262">Villeneuve-sur-Bellot</option>
+  <option value="263">Neauphle-le-Vieux</option>
+  <option value="264">Rebais</option>
+  <option value="265">Le Coudray-Montceaux</option>
+  <option value="266">Doue</option>
+  <option value="267">La Chapelle-Rablais</option>
+  <option value="268">Mousseaux-lès-Bray</option>
+  <option value="269">Bagneux</option>
+  <option value="270">Deuil-la-Barre</option>
+  <option value="271">La Chapelle-Moutils</option>
+  <option value="272">Bruyères-sur-Oise</option>
+  <option value="273">Bussy-Saint-Martin</option>
+  <option value="274">Hautefeuille</option>
+  <option value="275">Sammeron</option>
+  <option value="276">Saulx-les-Chartreux</option>
+  <option value="277">Chaville</option>
+  <option value="278">Mondeville</option>
+  <option value="279">Rosay</option>
+  <option value="280">Moret Loing et Orvanne</option>
+  <option value="281">Drancy</option>
+  <option value="282">Précy-sur-Marne</option>
+  <option value="283">Bouffémont</option>
+  <option value="284">Bures-sur-Yvette</option>
+  <option value="285">Saint-Jean-de-Beauregard</option>
+  <option value="286">Vallangoujard</option>
+  <option value="287">Joinville-le-Pont</option>
+  <option value="288">Neauphlette</option>
+  <option value="289">Cachan</option>
+  <option value="290">Dhuisy</option>
+  <option value="291">Souppes-sur-Loing</option>
+  <option value="292">Coupvray</option>
+  <option value="293">Maisons-Laffitte</option>
+  <option value="294">Jutigny</option>
+  <option value="295">Saint-Germain-sur-École</option>
+  <option value="296">Rouilly</option>
+  <option value="297">Sept-Sorts</option>
+  <option value="298">Buthiers</option>
+  <option value="299">Saint-Martin-des-Champs</option>
+  <option value="300">Lissy</option>
+  <option value="301">Ozouer-le-Voulgis</option>
+  <option value="302">Chalmaison</option>
+  <option value="303">Chartrettes</option>
+  <option value="304">Dagny</option>
+  <option value="305">Villiers-sur-Morin</option>
+  <option value="306">Courdimanche-sur-Essonne</option>
+  <option value="307">Sancy</option>
+  <option value="308">Soignolles-en-Brie</option>
+  <option value="309">Hardricourt</option>
+  <option value="310">Torcy</option>
+  <option value="311">Chailly-en-Bière</option>
+  <option value="312">Vayres-sur-Essonne</option>
+  <option value="313">Saint-Ouen-sur-Morin</option>
+  <option value="314">Moisselles</option>
+  <option value="315">Le Tartre-Gaudran</option>
+  <option value="316">Bourdonné</option>
+  <option value="317">Château-Landon</option>
+  <option value="318">Chaussy</option>
+  <option value="319">La Verrière</option>
+  <option value="320">Seugy</option>
+  <option value="321">Fontaine-Fourches</option>
+  <option value="322">Blaru</option>
+  <option value="323">Guigneville-sur-Essonne</option>
+  <option value="324">Samoreau</option>
+  <option value="325">Gironville</option>
+  <option value="326">Gambaiseuil</option>
+  <option value="327">Poincy</option>
+  <option value="328">Gif-sur-Yvette</option>
+  <option value="329">Tilly</option>
+  <option value="330">Le Plessis-Trévise</option>
+  <option value="331">Larchant</option>
+  <option value="332">Flins-sur-Seine</option>
+  <option value="333">Haute-Isle</option>
+  <option value="334">Le Mesnil-le-Roi</option>
+  <option value="335">Les Mesnuls</option>
+  <option value="336">Fontenay-aux-Roses</option>
+  <option value="337">Saint-Fiacre</option>
+  <option value="338">Aufferville</option>
+  <option value="339">Grandchamp</option>
+  <option value="340">Lognes</option>
+  <option value="341">Fontenay-Trésigny</option>
+  <option value="342">Maulette</option>
+  <option value="343">Barbizon</option>
+  <option value="344">Saint-Jean-les-Deux-Jumeaux</option>
+  <option value="345">Hédouville</option>
+  <option value="346">Beauchamp</option>
+  <option value="347">Sigy</option>
+  <option value="348">Pantin</option>
+  <option value="349">Rambouillet</option>
+  <option value="350">Jagny-sous-Bois</option>
+  <option value="351">Vieux-Champagne</option>
+  <option value="352">Évry-Grégy-sur-Yerre</option>
+  <option value="353">Champlan</option>
+  <option value="354">Les Marêts</option>
+  <option value="355">Saint-Brice</option>
+  <option value="356">Guignes</option>
+  <option value="357">Houilles</option>
+  <option value="358">Montainville</option>
+  <option value="359">Le Tremblay-sur-Mauldre</option>
+  <option value="360">Ablon-sur-Seine</option>
+  <option value="361">Arpajon</option>
+  <option value="362">Bouville</option>
+  <option value="363">Andrezel</option>
+  <option value="364">Puisieux</option>
+  <option value="365">Moussy</option>
+  <option value="366">Genainville</option>
+  <option value="367">Arrancourt</option>
+  <option value="368">Le Mesnil-Saint-Denis</option>
+  <option value="369">Condé-Sainte-Libiaire</option>
+  <option value="370">Saint-Michel-sur-Orge</option>
+  <option value="371">Hargeville</option>
+  <option value="372">La Celle-Saint-Cloud</option>
+  <option value="373">Gournay-sur-Marne</option>
+  <option value="374">Saint-Germain-sous-Doue</option>
+  <option value="375">Champdeuil</option>
+  <option value="376">Beaumont-du-Gâtinais</option>
+  <option value="377">Vaujours</option>
+  <option value="378">Pomponne</option>
+  <option value="379">Hondevilliers</option>
+  <option value="380">Saint-Rémy-la-Vanne</option>
+  <option value="381">Germigny-sous-Coulombs</option>
+  <option value="382">Villiers-Saint-Frédéric</option>
+  <option value="383">Bezons</option>
+  <option value="384">Éragny</option>
+  <option value="385">Vignely</option>
+  <option value="386">Boulogne-Billancourt</option>
+  <option value="387">Saint-Illiers-le-Bois</option>
+  <option value="388">Ecquevilly</option>
+  <option value="389">Paris 12e  Arrondissement</option>
+  <option value="390">Grandpuits-Bailly-Carrois</option>
+  <option value="391">Courpalay</option>
+  <option value="392">Louan-Villegruis-Fontaine</option>
+  <option value="393">Nesles-la-Vallée</option>
+  <option value="394">Beautheil-Saints</option>
+  <option value="395">Crosne</option>
+  <option value="396">Magny-les-Hameaux</option>
+  <option value="397">Poissy</option>
+  <option value="398">Gazeran</option>
+  <option value="399">Noisy-sur-Oise</option>
+  <option value="400">Ocquerre</option>
+  <option value="401">Courances</option>
+  <option value="402">Orly</option>
+  <option value="403">Noyen-sur-Seine</option>
+  <option value="404">Moussy-le-Vieux</option>
+  <option value="405">Davron</option>
+  <option value="406">Neuilly-sur-Seine</option>
+  <option value="407">Le Plessis-Pâté</option>
+  <option value="408">Richarville</option>
+  <option value="409">Lumigny-Nesles-Ormeaux</option>
+  <option value="410">Baulne</option>
+  <option value="411">Le Plessis-Robinson</option>
+  <option value="412">Angervilliers</option>
+  <option value="413">Trappes</option>
+  <option value="414">Mauregard</option>
+  <option value="415">La Grande-Paroisse</option>
+  <option value="416">Luzarches</option>
+  <option value="417">Saint-Just-en-Brie</option>
+  <option value="418">Paris 5e  Arrondissement</option>
+  <option value="419">Paris 2e  Arrondissement</option>
+  <option value="420">Gaillon-sur-Montcient</option>
+  <option value="421">Ormesson</option>
+  <option value="422">Condé-sur-Vesgre</option>
+  <option value="423">Pontoise</option>
+  <option value="424">Valpuiseaux</option>
+  <option value="425">Dammartin-en-Serve</option>
+  <option value="426">Chennevières-lès-Louvres</option>
+  <option value="427">Richebourg</option>
+  <option value="428">Vigneux-sur-Seine</option>
+  <option value="429">Faremoutiers</option>
+  <option value="430">Mérobert</option>
+  <option value="431">Villiers-le-Mahieu</option>
+  <option value="432">Bondoufle</option>
+  <option value="433">Plessis-Saint-Benoist</option>
+  <option value="434">Villeneuve-sur-Auvers</option>
+  <option value="435">Boulancourt</option>
+  <option value="436">Monthyon</option>
+  <option value="437">Feucherolles</option>
+  <option value="438">Morsang-sur-Orge</option>
+  <option value="439">Paris 9e  Arrondissement</option>
+  <option value="440">Auteuil</option>
+  <option value="441">Oinville-sur-Montcient</option>
+  <option value="442">Rozay-en-Brie</option>
+  <option value="443">Saint-Martin-la-Garenne</option>
+  <option value="444">Evry-Courcouronnes</option>
+  <option value="445">Saint-Augustin</option>
+  <option value="446">Ichy</option>
+  <option value="447">Forfry</option>
+  <option value="448">Noisiel</option>
+  <option value="449">Juziers</option>
+  <option value="450">Quincy-Voisins</option>
+  <option value="451">Émancé</option>
+  <option value="452">Saint-Leu-la-Forêt</option>
+  <option value="453">Bazoches-sur-Guyonne</option>
+  <option value="454">Saint-Yon</option>
+  <option value="455">Chilly-Mazarin</option>
+  <option value="456">Villejust</option>
+  <option value="457">Sainte-Geneviève-des-Bois</option>
+  <option value="458">Menouville</option>
+  <option value="459">Saint-Escobille</option>
+  <option value="460">Cléry-en-Vexin</option>
+  <option value="461">Le Châtelet-en-Brie</option>
+  <option value="462">Lieusaint</option>
+  <option value="463">Buhy</option>
+  <option value="464">Orgerus</option>
+  <option value="465">Voulangis</option>
+  <option value="466">Sourdun</option>
+  <option value="467">Chérence</option>
+  <option value="468">Villepreux</option>
+  <option value="469">Ponthévrard</option>
+  <option value="470">Congerville-Thionville</option>
+  <option value="471">Boissy-sans-Avoir</option>
+  <option value="472">Thieux</option>
+  <option value="473">Villiers-le-Sec</option>
+  <option value="474">Goupillières</option>
+  <option value="475">Saint-Ouen-l'Aumône</option>
+  <option value="476">Sermaise</option>
+  <option value="477">Collégien</option>
+  <option value="478">Ronquerolles</option>
+  <option value="479">Gommecourt</option>
+  <option value="480">Villiers-le-Bel</option>
+  <option value="481">Ozoir-la-Ferrière</option>
+  <option value="482">Pussay</option>
+  <option value="483">Maurepas</option>
+  <option value="484">Brou-sur-Chantereine</option>
+  <option value="485">Misy-sur-Yonne</option>
+  <option value="486">Argentières</option>
+  <option value="487">Wy-dit-Joli-Village</option>
+  <option value="488">Pierrefitte-sur-Seine</option>
+  <option value="489">Valence-en-Brie</option>
+  <option value="490">Vauhallan</option>
+  <option value="491">La Queue-en-Brie</option>
+  <option value="492">Thoury-Férottes</option>
+  <option value="493">Amenucourt</option>
+  <option value="494">Marles-en-Brie</option>
+  <option value="495">Athis-Mons</option>
+  <option value="496">Mortery</option>
+  <option value="497">Châteaubleau</option>
+  <option value="498">Thomery</option>
+  <option value="499">Cheptainville</option>
+  <option value="500">Hodent</option>
+  <option value="501">Noiseau</option>
+  <option value="502">Neuilly-sur-Marne</option>
+  <option value="503">Longpont-sur-Orge</option>
+  <option value="504">Châtillon</option>
+  <option value="505">Champs-sur-Marne</option>
+  <option value="506">Neuville-sur-Oise</option>
+  <option value="507">Donnemarie-Dontilly</option>
+  <option value="508">Amillis</option>
+  <option value="509">Saint-Siméon</option>
+  <option value="510">Dampmart</option>
+  <option value="511">Chamarande</option>
+  <option value="512">Chaumes-en-Brie</option>
+  <option value="513">Maisse</option>
+  <option value="514">Auvers-Saint-Georges</option>
+  <option value="515">Bullion</option>
+  <option value="516">Beton-Bazoches</option>
+  <option value="517">Jouy-le-Châtel</option>
+  <option value="518">Saint-Méry</option>
+  <option value="519">Tacoignières</option>
+  <option value="520">Survilliers</option>
+  <option value="521">Gouvernes</option>
+  <option value="522">Mours</option>
+  <option value="523">Osmoy</option>
+  <option value="524">Villenoy</option>
+  <option value="525">Saint-Martin-des-Champs</option>
+  <option value="526">Notre-Dame-de-la-Mer</option>
+  <option value="527">Igny</option>
+  <option value="528">Douy-la-Ramée</option>
+  <option value="529">Vendrest</option>
+  <option value="530">Bazoches-lès-Bray</option>
+  <option value="531">Gometz-la-Ville</option>
+  <option value="532">La Haute-Maison</option>
+  <option value="533">Saint-Maurice</option>
+  <option value="534">D'Huison-Longueville</option>
+  <option value="535">Maule</option>
+  <option value="536">Charenton-le-Pont</option>
+  <option value="537">Lagny-sur-Marne</option>
+  <option value="538">Germigny-l'Évêque</option>
+  <option value="539">Leuville-sur-Orge</option>
+  <option value="540">Meigneux</option>
+  <option value="541">Vélizy-Villacoublay</option>
+  <option value="542">Sainte-Aulde</option>
+  <option value="543">Bellefontaine</option>
+  <option value="544">Tournan-en-Brie</option>
+  <option value="545">Gometz-le-Châtel</option>
+  <option value="546">Orphin</option>
+  <option value="547">Saint-Mammès</option>
+  <option value="548">Cerneux</option>
+  <option value="549">La Rochette</option>
+  <option value="550">Auvers-sur-Oise</option>
+  <option value="551">Boissy-sous-Saint-Yon</option>
+  <option value="552">Nanteuil-lès-Meaux</option>
+  <option value="553">Choisel</option>
+  <option value="554">Clamart</option>
+  <option value="555">Cannes-Écluse</option>
+  <option value="556">Sagy</option>
+  <option value="557">Chartronges</option>
+  <option value="558">Quiers</option>
+  <option value="559">Adainville</option>
+  <option value="560">Vitry-sur-Seine</option>
+  <option value="561">Courgent</option>
+  <option value="562">Meaux</option>
+  <option value="563">Limetz-Villez</option>
+  <option value="564">Le Plessis-Feu-Aussoux</option>
+  <option value="565">Vaux-le-Pénil</option>
+  <option value="566">Esmans</option>
+  <option value="567">Follainville-Dennemont</option>
+  <option value="568">Bernes-sur-Oise</option>
+  <option value="569">Iverny</option>
+  <option value="570">Le Mée-sur-Seine</option>
+  <option value="571">Flacourt</option>
+  <option value="572">Auffreville-Brasseuil</option>
+  <option value="573">Villeconin</option>
+  <option value="574">Champagne-sur-Seine</option>
+  <option value="575">Cuisy</option>
+  <option value="576">Auvernaux</option>
+  <option value="577">Pierre-Levée</option>
+  <option value="578">Épiais-lès-Louvres</option>
+  <option value="579">Montereau-Fault-Yonne</option>
+  <option value="580">Montceaux-lès-Meaux</option>
+  <option value="581">Neuilly-Plaisance</option>
+  <option value="582">Les Lilas</option>
+  <option value="583">Pézarches</option>
+  <option value="584">Mary-sur-Marne</option>
+  <option value="585">Rolleboise</option>
+  <option value="586">Puiselet-le-Marais</option>
+  <option value="587">Fromont</option>
+  <option value="588">Rubelles</option>
+  <option value="589">Montceaux-lès-Provins</option>
+  <option value="590">Vigny</option>
+  <option value="591">Le Thillay</option>
+  <option value="592">Marly-la-Ville</option>
+  <option value="593">Senlisse</option>
+  <option value="594">Saint-Mandé</option>
+  <option value="595">Villeroy</option>
+  <option value="596">Viry-Châtillon</option>
+  <option value="597">Mandres-les-Roses</option>
+  <option value="598">Congis-sur-Thérouanne</option>
+  <option value="599">Lorrez-le-Bocage-Préaux</option>
+  <option value="600">Citry</option>
+  <option value="601">Yèbles</option>
+  <option value="602">Vert-le-Grand</option>
+  <option value="603">Thiverval-Grignon</option>
+  <option value="604">Garancières</option>
+  <option value="605">Breuillet</option>
+  <option value="606">Champmotteux</option>
+  <option value="607">Le Tertre-Saint-Denis</option>
+  <option value="608">Cély</option>
+  <option value="609">Fleury-Mérogis</option>
+  <option value="610">Barbey</option>
+  <option value="611">Sceaux</option>
+  <option value="612">Annet-sur-Marne</option>
+  <option value="613">La Ville-du-Bois</option>
+  <option value="614">Marcoussis</option>
+  <option value="615">Le Plessis-l'Évêque</option>
+  <option value="616">Vulaines-lès-Provins</option>
+  <option value="617">Mennecy</option>
+  <option value="618">Montmorency</option>
+  <option value="619">Santeuil</option>
+  <option value="620">Maison-Rouge</option>
+  <option value="621">Limay</option>
+  <option value="622">Nanteuil-sur-Marne</option>
+  <option value="623">Le Raincy</option>
+  <option value="624">Boissy-la-Rivière</option>
+  <option value="625">Vétheuil</option>
+  <option value="626">Vienne-en-Arthies</option>
+  <option value="627">Oncy-sur-École</option>
+  <option value="628">Saint-Illiers-la-Ville</option>
+  <option value="629">Chars</option>
+  <option value="630">Villiers-sur-Seine</option>
+  <option value="631">Raizeux</option>
+  <option value="632">Sablonnières</option>
+  <option value="633">Chevru</option>
+  <option value="634">Jouarre</option>
+  <option value="635">La Houssaye-en-Brie</option>
+  <option value="636">La Ferté-Gaucher</option>
+  <option value="637">Saint-Forget</option>
+  <option value="638">Couilly-Pont-aux-Dames</option>
+  <option value="639">Chelles</option>
+  <option value="640">Clichy</option>
+  <option value="641">Jumeauville</option>
+  <option value="642">Enghien-les-Bains</option>
+  <option value="643">Nainville-les-Roches</option>
+  <option value="644">Chailly-en-Brie</option>
+  <option value="645">Paris 4e  Arrondissement</option>
+  <option value="646">Frémécourt</option>
+  <option value="647">Guernes</option>
+  <option value="648">Vaux-sur-Seine</option>
+  <option value="649">Montenils</option>
+  <option value="650">Forges-les-Bains</option>
+  <option value="651">Stains</option>
+  <option value="652">Obsonville</option>
+  <option value="653">La Garenne-Colombes</option>
+  <option value="654">Roissy-en-Brie</option>
+  <option value="655">Isles-les-Meldeuses</option>
+  <option value="656">Le Val-Saint-Germain</option>
+  <option value="657">Yerres</option>
+  <option value="658">Nucourt</option>
+  <option value="659">Saint-Aubin</option>
+  <option value="660">Cormeilles-en-Vexin</option>
+  <option value="661">Parmain</option>
+  <option value="662">Mériel</option>
+  <option value="663">Thoiry</option>
+  <option value="664">Chevry-en-Sereine</option>
+  <option value="665">Levallois-Perret</option>
+  <option value="666">Saint-Léger-en-Yvelines</option>
+  <option value="667">Buchelay</option>
+  <option value="668">Épinay-sur-Seine</option>
+  <option value="669">Antony</option>
+  <option value="670">Saint-Chéron</option>
+  <option value="671">Osny</option>
+  <option value="672">Vinantes</option>
+  <option value="673">Gouaix</option>
+  <option value="674">Ennery</option>
+  <option value="675">Tigery</option>
+  <option value="676">Montgé-en-Goële</option>
+  <option value="677">Arnouville</option>
+  <option value="678">Mareil-Marly</option>
+  <option value="679">Bussières</option>
+  <option value="680">Arbonne-la-Forêt</option>
+  <option value="681">Flins-Neuve-Église</option>
+  <option value="682">Villeparisis</option>
+  <option value="683">Fleury-en-Bière</option>
+  <option value="684">Mitry-Mory</option>
+  <option value="685">Balloy</option>
+  <option value="686">Andrésy</option>
+  <option value="687">Bagnolet</option>
+  <option value="688">Asnières-sur-Seine</option>
+  <option value="689">Pécy</option>
+  <option value="690">Saint-Vrain</option>
+  <option value="691">Saint-Pierre-du-Perray</option>
+  <option value="692">Poigny-la-Forêt</option>
+  <option value="693">Châtillon-la-Borde</option>
+  <option value="694">Le Pecq</option>
+  <option value="695">Puiseux-en-France</option>
+  <option value="696">Saint-Germain-Laxis</option>
+  <option value="697">Bailly</option>
+  <option value="698">Courbevoie</option>
+  <option value="699">Villemer</option>
+  <option value="700">Pecqueuse</option>
+  <option value="701">Bezalles</option>
+  <option value="702">Mouy-sur-Seine</option>
+  <option value="703">Massy</option>
+  <option value="704">Recloses</option>
+  <option value="705">Gravon</option>
+  <option value="706">Soisy-Bouy</option>
+  <option value="707">Theuville</option>
+  <option value="708">Saint-Mard</option>
+  <option value="709">Saint-Cyr-en-Arthies</option>
+  <option value="710">Rosny-sur-Seine</option>
+  <option value="711">Gretz-Armainvilliers</option>
+  <option value="712">Champcueil</option>
+  <option value="713">Coubron</option>
+  <option value="714">Vincennes</option>
+  <option value="715">Grisy-les-Plâtres</option>
+  <option value="716">Saâcy-sur-Marne</option>
+  <option value="717">Meilleray</option>
+  <option value="718">Saint-Martin-en-Bière</option>
+  <option value="719">Baby</option>
+  <option value="720">Bry-sur-Marne</option>
+  <option value="721">Conflans-Sainte-Honorine</option>
+  <option value="722">Marolles-sur-Seine</option>
+  <option value="723">Authon-la-Plaine</option>
+  <option value="724">Paley</option>
+  <option value="725">Chalautre-la-Grande</option>
+  <option value="726">Ambleville</option>
+  <option value="727">Cergy</option>
+  <option value="728">Émerainville</option>
+  <option value="729">Vaucourtois</option>
+  <option value="730">Conches-sur-Gondoire</option>
+  <option value="731">Féricy</option>
+  <option value="732">Courtomer</option>
+  <option value="733">Boinville-en-Mantois</option>
+  <option value="734">Lizines</option>
+  <option value="735">Changis-sur-Marne</option>
+  <option value="736">Ézanville</option>
+  <option value="737">Mortcerf</option>
+  <option value="738">L'Haÿ-les-Roses</option>
+  <option value="739">Bruyères-le-Châtel</option>
+  <option value="740">Solers</option>
+  <option value="741">Gennevilliers</option>
+  <option value="742">Paris 17e  Arrondissement</option>
+  <option value="743">Noisy-le-Roi</option>
+  <option value="744">Bonneuil-en-France</option>
+  <option value="745">Maisons-Alfort</option>
+  <option value="746">La Roche-Guyon</option>
+  <option value="747">Civry-la-Forêt</option>
+  <option value="748">Lisses</option>
+  <option value="749">Épinay-Champlâtreux</option>
+  <option value="750">Gesvres-le-Chapitre</option>
+  <option value="751">Soisy-sous-Montmorency</option>
+  <option value="752">Rennemoulin</option>
+  <option value="753">Montfort-l'Amaury</option>
+  <option value="754">Champigny-sur-Marne</option>
+  <option value="755">Périgny</option>
+  <option value="756">Alfortville</option>
+  <option value="757">Saint-Germain-sur-Morin</option>
+  <option value="758">Haravilliers</option>
+  <option value="759">Noisy-Rudignon</option>
+  <option value="760">Vincy-Manœuvre</option>
+  <option value="761">La Brosse-Montceaux</option>
+  <option value="762">Saint-Germain-lès-Arpajon</option>
+  <option value="763">Évecquemont</option>
+  <option value="764">Saint-Prix</option>
+  <option value="765">Villiers-le-Bâcle</option>
+  <option value="766">Le Vaudoué</option>
+  <option value="767">Presles</option>
+  <option value="768">Paroy</option>
+  <option value="769">Arronville</option>
+  <option value="770">Jablines</option>
+  <option value="771">Villemareuil</option>
+  <option value="772">Saint-Hilliers</option>
+  <option value="773">Montigny-le-Bretonneux</option>
+  <option value="774">Longnes</option>
+  <option value="775">Machault</option>
+  <option value="776">L'Île-Saint-Denis</option>
+  <option value="777">Charny</option>
+  <option value="778">Le Plessis-Gassot</option>
+  <option value="779">Sevran</option>
+  <option value="780">Paris 20e  Arrondissement</option>
+  <option value="781">Gambais</option>
+  <option value="782">Jouy-sur-Morin</option>
+  <option value="783">Franconville</option>
+  <option value="784">Saint-Cyr-sur-Morin</option>
+  <option value="785">Linas</option>
+  <option value="786">Milly-la-Forêt</option>
+  <option value="787">Sainte-Mesme</option>
+  <option value="788">Grisy-Suisnes</option>
+  <option value="789">Moisenay</option>
+  <option value="790">Aubervilliers</option>
+  <option value="791">Sarcelles</option>
+  <option value="792">Villiers-Saint-Georges</option>
+  <option value="793">Ferrières-en-Brie</option>
+  <option value="794">Saintry-sur-Seine</option>
+  <option value="795">Paris 6e  Arrondissement</option>
+  <option value="796">Lescherolles</option>
+  <option value="797">Méry-sur-Marne</option>
+  <option value="798">Fontains</option>
+  <option value="799">Montry</option>
+  <option value="800">Boitron</option>
+  <option value="801">Nangis</option>
+  <option value="802">Banthelu</option>
+  <option value="803">Saint-Sauveur-sur-École</option>
+  <option value="804">Bennecourt</option>
+  <option value="805">Crécy-la-Chapelle</option>
+  <option value="806">Perdreauville</option>
+  <option value="807">Courcelles-sur-Viosne</option>
+  <option value="808">Villers-en-Arthies</option>
+  <option value="809">Chauconin-Neufmontiers</option>
+  <option value="810">Puiseux-Pontoise</option>
+  <option value="811">Bassevelle</option>
+  <option value="812">La Celle-sur-Morin</option>
+  <option value="813">Chevannes</option>
+  <option value="814">Jouy-le-Moutier</option>
+  <option value="815">Mareuil-lès-Meaux</option>
+  <option value="816">Aulnay-sous-Bois</option>
+  <option value="817">Écharcon</option>
+  <option value="818">Vernouillet</option>
+  <option value="819">Marcilly</option>
+  <option value="820">Ury</option>
+  <option value="821">Ballainvilliers</option>
+  <option value="822">Ris-Orangis</option>
+  <option value="823">Marolles-en-Hurepoix</option>
+  <option value="824">Moigny-sur-École</option>
+  <option value="825">Guitrancourt</option>
+  <option value="826">Les Essarts-le-Roi</option>
+  <option value="827">Vulaines-sur-Seine</option>
+  <option value="828">Savigny-le-Temple</option>
+  <option value="829">Carrières-sur-Seine</option>
+  <option value="830">Drocourt</option>
+  <option value="831">Croissy-Beaubourg</option>
+  <option value="832">Malakoff</option>
+  <option value="833">Varreddes</option>
+  <option value="834">Maisoncelles-en-Brie</option>
+  <option value="835">Aulnoy</option>
+  <option value="836">Ormesson-sur-Marne</option>
+  <option value="837">Boutigny-sur-Essonne</option>
+  <option value="838">Groslay</option>
+  <option value="839">Rupéreux</option>
+  <option value="840">Trilbardou</option>
+  <option value="841">Moussy-le-Neuf</option>
+  <option value="842">Guyancourt</option>
+  <option value="843">Châtenoy</option>
+  <option value="844">Coubert</option>
+  <option value="845">Cessoy-en-Montois</option>
+  <option value="846">Montsoult</option>
+  <option value="847">Ménerville</option>
+  <option value="848">Coulombs-en-Valois</option>
+  <option value="849">Souzy-la-Briche</option>
+  <option value="850">Meulan-en-Yvelines</option>
+  <option value="851">Mousseaux-sur-Seine</option>
+  <option value="852">La Boissière-École</option>
+  <option value="853">Saint-Denis-lès-Rebais</option>
+  <option value="854">Othis</option>
+  <option value="855">Montdauphin</option>
+  <option value="856">Nerville-la-Forêt</option>
+  <option value="857">Tousson</option>
+  <option value="858">Mézières-sur-Seine</option>
+  <option value="859">Nézel</option>
+  <option value="860">Brignancourt</option>
+  <option value="861">Frétoy</option>
+  <option value="862">Rouvres</option>
+  <option value="863">Sognolles-en-Montois</option>
+  <option value="864">Goussainville</option>
+  <option value="865">Le Mesnil-Aubry</option>
+  <option value="866">Montigny-le-Guesdier</option>
+  <option value="867">Aincourt</option>
+  <option value="868">Grigny</option>
+  <option value="869">Montreuil-sur-Epte</option>
+  <option value="870">Saint-Mars-Vieux-Maisons</option>
+  <option value="871">La Norville</option>
+  <option value="872">Beauchery-Saint-Martin</option>
+  <option value="873">Brueil-en-Vexin</option>
+  <option value="874">Longjumeau</option>
+  <option value="875">Charmont</option>
+  <option value="876">Saint-Cyr-sous-Dourdan</option>
+  <option value="877">Bourron-Marlotte</option>
+  <option value="878">Chambry</option>
+  <option value="879">Ormoy-la-Rivière</option>
+  <option value="880">Chevry-Cossigny</option>
+  <option value="881">Seraincourt</option>
+  <option value="882">Vauréal</option>
+  <option value="883">Nanteau-sur-Lunain</option>
+  <option value="884">Champeaux</option>
+  <option value="885">Bois-le-Roi</option>
+  <option value="886">Boissy-aux-Cailles</option>
+  <option value="887">Méricourt</option>
+  <option value="888">Étiolles</option>
+  <option value="889">Saint-Martin-du-Boschet</option>
+  <option value="890">Villaines-sous-Bois</option>
+  <option value="891">Bièvres</option>
+  <option value="892">Frémainville</option>
+  <option value="893">Abbéville-la-Rivière</option>
+  <option value="894">Mézy-sur-Seine</option>
+  <option value="895">Montreuil</option>
+  <option value="896">Chalifert</option>
+  <option value="897">Giremoutiers</option>
+  <option value="898">Lainville-en-Vexin</option>
+  <option value="899">Gentilly</option>
+  <option value="900">Pamfou</option>
+  <option value="901">Saint-Maur-des-Fossés</option>
+  <option value="902">Cocherel</option>
+  <option value="903">Grosrouvre</option>
+  <option value="904">Magny-le-Hongre</option>
+  <option value="905">Paris 19e  Arrondissement</option>
+  <option value="906">Magny-en-Vexin</option>
+  <option value="907">Hermeray</option>
+  <option value="908">Varennes-sur-Seine</option>
+  <option value="909">Carnetin</option>
+  <option value="910">Épône</option>
+  <option value="911">Villeneuve-le-Roi</option>
+  <option value="912">Voisins-le-Bretonneux</option>
+  <option value="913">Saint-Léger</option>
+  <option value="914">Vanves</option>
+  <option value="915">Sonchamp</option>
+  <option value="916">Morigny-Champigny</option>
+  <option value="917">Saclas</option>
+  <option value="918">Tremblay-en-France</option>
+  <option value="919">Beaumont-sur-Oise</option>
+  <option value="920">Vaugrigneuse</option>
+  <option value="921">Gressy</option>
+  <option value="922">Vaudoy-en-Brie</option>
+  <option value="923">Cesson</option>
+  <option value="924">Étampes</option>
+  <option value="925">Isles-lès-Villenoy</option>
+  <option value="926">Crisenoy</option>
+  <option value="927">Les Granges-le-Roi</option>
+  <option value="928">Héricy</option>
+  <option value="929">Penchard</option>
+  <option value="930">Noisy-le-Grand</option>
+  <option value="931">La Chapelle-la-Reine</option>
+  <option value="932">Bray-sur-Seine</option>
+  <option value="933">Condécourt</option>
+  <option value="934">Les Bréviaires</option>
+  <option value="935">Mareil-sur-Mauldre</option>
+  <option value="936">Paray-Vieille-Poste</option>
+  <option value="937">Clairefontaine-en-Yvelines</option>
+  <option value="938">Écouen</option>
+  <option value="939">Blennes</option>
+  <option value="940">Verrières-le-Buisson</option>
+  <option value="941">Courtry</option>
+  <option value="942">Rosny-sous-Bois</option>
+  <option value="943">Orly-sur-Morin</option>
+  <option value="944">Pierrelaye</option>
+  <option value="945">Marcq</option>
+  <option value="946">Mulcent</option>
+  <option value="947">Choisy-en-Brie</option>
+  <option value="948">Bréval</option>
+  <option value="949">Maisoncelles-en-Gâtinais</option>
+  <option value="950">La Queue-les-Yvelines</option>
+  <option value="951">Saint-Hilaire</option>
+  <option value="952">Noisy-le-Sec</option>
+  <option value="953">Cerny</option>
+  <option value="954">Arthies</option>
+  <option value="955">Chauvry</option>
+  <option value="956">Chalou-Moulineux</option>
+  <option value="957">Le Plessis-aux-Bois</option>
+  <option value="958">Marly-le-Roi</option>
+  <option value="959">Buc</option>
+  <option value="960">Villemaréchal</option>
+  <option value="961">Guiry-en-Vexin</option>
+  <option value="962">Mespuits</option>
+  <option value="963">Limours</option>
+  <option value="964">Lassy</option>
+  <option value="965">Fontaine-la-Rivière</option>
+  <option value="966">Draveil</option>
+  <option value="967">Courson-Monteloup</option>
+  <option value="968">Barcy</option>
+  <option value="969">Vémars</option>
+  <option value="970">Villenauxe-la-Petite</option>
+  <option value="971">Thorigny-sur-Marne</option>
+  <option value="972">Épinay-sur-Orge</option>
+  <option value="973">Montchauvet</option>
+  <option value="974">Vaires-sur-Marne</option>
+  <option value="975">Mouroux</option>
+  <option value="976">Saint-Arnoult-en-Yvelines</option>
+  <option value="977">Saint-Germain-lès-Corbeil</option>
+  <option value="978">Persan</option>
+  <option value="979">Gargenville</option>
+  <option value="980">Vert-Saint-Denis</option>
+  <option value="981">Villeneuve-Saint-Denis</option>
+  <option value="982">Chalautre-la-Petite</option>
+  <option value="983">Augers-en-Brie</option>
+  <option value="984">Méré</option>
+  <option value="985">Saint-Ouen-en-Brie</option>
+  <option value="986">Esbly</option>
+  <option value="987">Mauperthuis</option>
+  <option value="988">Hermé</option>
+  <option value="989">Compans</option>
+  <option value="990">Poligny</option>
+  <option value="991">Rueil-Malmaison</option>
+  <option value="992">Ableiges</option>
+  <option value="993">Avernes</option>
+  <option value="994">Jouy-Mauvoisin</option>
+  <option value="995">Blandy</option>
+  <option value="996">Chanteloup-en-Brie</option>
+  <option value="997">Vernou-la-Celle-sur-Seine</option>
+  <option value="998">Villeron</option>
+  <option value="999">La Madeleine-sur-Loing</option>
+  <option value="1000">Us</option>
+  <option value="1001">Mons-en-Montois</option>
+  <option value="1002">Voulton</option>
+  <option value="1003">Boissy-le-Cutté</option>
+  <option value="1004">Villiers-sous-Grez</option>
+  <option value="1005">Garges-lès-Gonesse</option>
+  <option value="1006">Bessancourt</option>
+  <option value="1007">Clichy-sous-Bois</option>
+  <option value="1008">Montereau-sur-le-Jard</option>
+  <option value="1009">Bouafle</option>
+  <option value="1010">Bois-Colombes</option>
+  <option value="1011">Gonesse</option>
+  <option value="1012">Vanvillé</option>
+  <option value="1013">Marolles-en-Brie</option>
+  <option value="1014">Soindres</option>
+  <option value="1015">Épinay-sous-Sénart</option>
+  <option value="1016">Bréau</option>
+  <option value="1017">Chambourcy</option>
+  <option value="1018">Perthes</option>
+  <option value="1019">Fresnes-sur-Marne</option>
+  <option value="1020">Coutençon</option>
+  <option value="1021">Brétigny-sur-Orge</option>
+  <option value="1022">Villuis</option>
+  <option value="1023">Marines</option>
+  <option value="1024">Arnouville-lès-Mantes</option>
+  <option value="1025">Garches</option>
+  <option value="1026">Herbeville</option>
+  <option value="1027">Saint-Rémy-l'Honoré</option>
+  <option value="1028">Les Ormes-sur-Voulzie</option>
+  <option value="1029">Serris</option>
+  <option value="1030">Le Plessis-Luzarches</option>
+  <option value="1031">La Courneuve</option>
+  <option value="1032">Grisy-sur-Seine</option>
+  <option value="1033">Seine-Port</option>
+  <option value="1034">Saint-Germain-Laval</option>
+  <option value="1035">Paris 15e  Arrondissement</option>
+  <option value="1036">Paris 1er Arrondissement</option>
+  <option value="1037">Beynes</option>
+  <option value="1038">Verdelot</option>
+  <option value="1039">Chenoise-Cucharmoy</option>
+  <option value="1040">Saint-Soupplets</option>
+  <option value="1041">Bellot</option>
+  <option value="1042">Étréchy</option>
+  <option value="1043">Ollainville</option>
+  <option value="1044">Quincy-sous-Sénart</option>
+  <option value="1045">Valmondois</option>
+  <option value="1046">Chamigny</option>
+  <option value="1047">Leudeville</option>
+  <option value="1048">La Croix-en-Brie</option>
+  <option value="1049">Le Plessis-Bouchard</option>
+  <option value="1050">Tessancourt-sur-Aubette</option>
+  <option value="1051">Montesson</option>
+  <option value="1052">Dourdan</option>
+  <option value="1053">Claye-Souilly</option>
+  <option value="1054">Omerville</option>
+  <option value="1055">Ville-d'Avray</option>
+  <option value="1056">Chaintreaux</option>
+  <option value="1057">Chevreuse</option>
+  <option value="1058">Gressey</option>
+  <option value="1059">La Chapelle-en-Vexin</option>
+  <option value="1060">Fontenay-Mauvoisin</option>
+  <option value="1061">Dannemois</option>
+  <option value="1062">Villemoisson-sur-Orge</option>
+  <option value="1063">Pommeuse</option>
+  <option value="1064">Louveciennes</option>
+  <option value="1065">Montigny-sur-Loing</option>
+  <option value="1066">Domont</option>
+  <option value="1067">Thiais</option>
+  <option value="1068">Montcourt-Fromonville</option>
+  <option value="1069">Villeneuve-la-Garenne</option>
+  <option value="1070">Marnes-la-Coquette</option>
+  <option value="1071">Montgeron</option>
+  <option value="1072">Saint-Germain-de-la-Grange</option>
+  <option value="1073">Crespières</option>
+  <option value="1074">Salins</option>
+  <option value="1075">Marchémoret</option>
+  <option value="1076">Guibeville</option>
+  <option value="1077">Bransles</option>
+  <option value="1078">Villetaneuse</option>
+  <option value="1079">Médan</option>
+  <option value="1080">Leudon-en-Brie</option>
+  <option value="1081">Bondy</option>
+  <option value="1082">Villeneuve-sous-Dammartin</option>
+  <option value="1083">Mondreville</option>
+  <option value="1084">Argenteuil</option>
+  <option value="1085">La Forêt-Sainte-Croix</option>
+  <option value="1086">Sèvres</option>
+  <option value="1087">Breuil-Bois-Robert</option>
+  <option value="1088">Bouqueval</option>
+  <option value="1089">Moissy-Cramayel</option>
+  <option value="1090">Samois-sur-Seine</option>
+  <option value="1091">Villiers-sur-Orge</option>
+  <option value="1092">Avon</option>
+  <option value="1093">Villeneuve-Saint-Georges</option>
+  <option value="1094">Fontainebleau</option>
+  <option value="1095">Burcy</option>
+  <option value="1096">Moisson</option>
+  <option value="1097">Montlignon</option>
+  <option value="1098">Savins</option>
+  <option value="1099">L'Isle-Adam</option>
+  <option value="1100">Galluis</option>
+  <option value="1101">Orgeval</option>
+  <option value="1102">Ussy-sur-Marne</option>
+  <option value="1103">Crèvecœur-en-Brie</option>
+  <option value="1104">Palaiseau</option>
+  <option value="1105">Villabé</option>
+  <option value="1106">Jouars-Pontchartrain</option>
+  <option value="1107">Saint-Pierre-lès-Nemours</option>
+  <option value="1108">Trocy-en-Multien</option>
+  <option value="1109">Faÿ-lès-Nemours</option>
+  <option value="1110">Forges</option>
+  <option value="1111">Viroflay</option>
+  <option value="1112">Boissise-le-Roi</option>
+  <option value="1113">Sainte-Colombe</option>
+  <option value="1114">Livry-Gargan</option>
+  <option value="1115">Chessy</option>
+  <option value="1116">Frouville</option>
+  <option value="1117">Montmagny</option>
+  <option value="1118">Le Vésinet</option>
+  <option value="1119">Toussus-le-Noble</option>
+  <option value="1120">Courdimanche</option>
+  <option value="1121">Fontenay-lès-Briis</option>
+  <option value="1122">Mauchamps</option>
+  <option value="1123">Saint-Cloud</option>
+  <option value="1124">Courcelles-en-Bassée</option>
+  <option value="1125">Crégy-lès-Meaux</option>
+  <option value="1126">Gironville-sur-Essonne</option>
+  <option value="1127">Coulommes</option>
+  <option value="1128">Issou</option>
+  <option value="1129">Égligny</option>
+  <option value="1130">Juvisy-sur-Orge</option>
+  <option value="1131">Arcueil</option>
+  <option value="1132">Commeny</option>
+  <option value="1133">Boisemont</option>
+  <option value="1134">Dampierre-en-Yvelines</option>
+  <option value="1135">Chevilly-Larue</option>
+  <option value="1136">Blandy</option>
+  <option value="1137">Mantes-la-Ville</option>
+  <option value="1138">Suresnes</option>
+  <option value="1139">Montgeroult</option>
+  <option value="1140">Touquin</option>
+  <option value="1141">Soisy-sur-Seine</option>
+  <option value="1142">Villejuif</option>
+  <option value="1143">Tancrou</option>
+  <option value="1144">Marolles-en-Brie</option>
+  <option value="1145">Courchamp</option>
+  <option value="1146">May-en-Multien</option>
+  <option value="1147">Laval-en-Brie</option>
+  <option value="1148">Porcheville</option>
+  <option value="1149">La Chapelle-Gauthier</option>
+  <option value="1150">Orvilliers</option>
+  <option value="1151">Guillerval</option>
+  <option value="1152">Jaulnes</option>
+  <option value="1153">Nogent-sur-Marne</option>
+  <option value="1154">Saint-Ouen</option>
+  <option value="1155">Saint-Germain-en-Laye</option>
+  <option value="1156">Boissy-le-Châtel</option>
+  <option value="1157">Les Ulis</option>
+  <option value="1158">Berville</option>
+  <option value="1159">Léchelle</option>
+  <option value="1160">Voinsles</option>
+  <option value="1161">Aubergenville</option>
+  <option value="1162">Pontault-Combault</option>
+  <option value="1163">La Ferté-sous-Jouarre</option>
+  <option value="1164">Vert</option>
+  <option value="1165">Le Pré-Saint-Gervais</option>
+  <option value="1166">L'Étang-la-Ville</option>
+  <option value="1167">Thénisy</option>
+  <option value="1168">Saint-Barthélemy</option>
+  <option value="1169">Boissets</option>
+  <option value="1170">Sucy-en-Brie</option>
+  <option value="1171">Villecerf</option>
+  <option value="1172">Mondreville</option>
+  <option value="1173">Brie-Comte-Robert</option>
+  <option value="1174">Rampillon</option>
+  <option value="1175">Bernay-Vilbert</option>
+  <option value="1176">Rumont</option>
+  <option value="1177">Nandy</option>
+  <option value="1178">Le Perchay</option>
+  <option value="1179">Prunay-le-Temple</option>
+  <option value="1180">Le Pin</option>
+  <option value="1181">Chaufour-lès-Bonnières</option>
+  <option value="1182">La Genevraye</option>
+  <option value="1183">Créteil</option>
+  <option value="1184">Longvilliers</option>
+  <option value="1185">Paray-Douaville</option>
+  <option value="1186">Livilliers</option>
+  <option value="1187">Livry-sur-Seine</option>
+  <option value="1188">Cravent</option>
+  <option value="1189">Champcenest</option>
+  <option value="1190">Réau</option>
+  <option value="1191">Pringy</option>
+  <option value="1192">Oissery</option>
+  <option value="1193">Buno-Bonnevaux</option>
+  <option value="1194">Ville-Saint-Jacques</option>
+  <option value="1195">Fontenay-Saint-Père</option>
+  <option value="1196">Varennes-Jarcy</option>
+  <option value="1197">Villiers-sur-Marne</option>
+  <option value="1198">Voulx</option>
+  <option value="1199">Saclay</option>
+  <option value="1200">Achères</option>
+  <option value="1201">Chatou</option>
+  <option value="1202">Montigny-Lencoup</option>
+  <option value="1203">Everly</option>
+  <option value="1204">Les Pavillons-sous-Bois</option>
+  <option value="1205">Labbeville</option>
+  <option value="1206">Verneuil-l'Étang</option>
+  <option value="1207">Boissy-le-Sec</option>
+  <option value="1208">Mantes-la-Jolie</option>
+  <option value="1209">Bonneuil-sur-Marne</option>
+  <option value="1210">Colombes</option>
+  <option value="1211">Les Clayes-sous-Bois</option>
+  <option value="1212">La Chapelle-Iger</option>
+  <option value="1213">Dammartin-sur-Tigeaux</option>
+  <option value="1214">Gurcy-le-Châtel</option>
+  <option value="1215">Attainville</option>
+  <option value="1216">Millemont</option>
+  <option value="1217">Béhoust</option>
+  <option value="1218">Roissy-en-France</option>
+  <option value="1219">Fouju</option>
+  <option value="1220">Saulx-Marchais</option>
+  <option value="1221">Villepinte</option>
+  <option value="1222">Bonnelles</option>
+  <option value="1223">Nantouillet</option>
+  <option value="1224">Chaumontel</option>
+  <option value="1225">Presles-en-Brie</option>
+  <option value="1226">Fontenay-en-Parisis</option>
+  <option value="1227">Baillet-en-France</option>
+  <option value="1228">Saint-Gervais</option>
+  <option value="1229">Le Perray-en-Yvelines</option>
+  <option value="1230">Fontenay-le-Fleury</option>
+  <option value="1231">Savigny-sur-Orge</option>
+  <option value="1232">Nanteau-sur-Essonne</option>
+  <option value="1233">Saint-Denis</option>
+  <option value="1234">Chapet</option>
+  <option value="1235">Boussy-Saint-Antoine</option>
+  <option value="1236">Mareil-en-France</option>
+  <option value="1237">Septeuil</option>
+  <option value="1238">Bagneaux-sur-Loing</option>
+  <option value="1239">Ballancourt-sur-Essonne</option>
+  <option value="1240">Châtres</option>
+  <option value="1241">Meudon</option>
+  <option value="1242">Messy</option>
+  <option value="1243">Villeneuve-les-Bordes</option>
+  <option value="1244">Armentières-en-Brie</option>
+  <option value="1245">Sivry-Courtry</option>
+  <option value="1246">Piscop</option>
+  <option value="1247">La Forêt-le-Roi</option>
+  <option value="1248">Sancy-lès-Provins</option>
+  <option value="1249">Saint-Maurice-Montcouronne</option>
+  <option value="1250">Orsay</option>
+  <option value="1251">Chauffry</option>
+  <option value="1252">Carrières-sous-Poissy</option>
+  <option value="1253">Arville</option>
+  <option value="1254">Limoges-Fourches</option>
+  <option value="1255">Poigny</option>
+  <option value="1256">Bailly-Romainvilliers</option>
+  <option value="1257">Gouzangrez</option>
+  <option value="1258">Saint-Sulpice-de-Favières</option>
+  <option value="1259">Hérouville</option>
+  <option value="1260">Montigny-lès-Cormeilles</option>
+  <option value="1261">Montalet-le-Bois</option>
+  <option value="1262">Vieille-Église-en-Yvelines</option>
+  <option value="1263">Santeny</option>
+  <option value="1264">Châtenay-sur-Seine</option>
+  <option value="1265">Épiais-Rhus</option>
+  <option value="1266">Paris 14e  Arrondissement</option>
+  <option value="1267">Les Écrennes</option>
+  <option value="1268">Bouray-sur-Juine</option>
+  <option value="1269">Brouy</option>
+  <option value="1270">Montmachoux</option>
+  <option value="1271">Brières-les-Scellés</option>
+  <option value="1272">Neufmoutiers-en-Brie</option>
+  <option value="1273">Saint-Pathus</option>
+  <option value="1274">Châteaufort</option>
+  <option value="1275">Monnerville</option>
+  <option value="1276">Bonnières-sur-Seine</option>
+  <option value="1277">Béthemont-la-Forêt</option>
+  <option value="1278">Roinville</option>
+  <option value="1279">Montlhéry</option>
+  <option value="1280">Rungis</option>
+  <option value="1281">Wissous</option>
+  <option value="1282">Guerville</option>
+  <option value="1283">Andelu</option>
+  <option value="1284">Morainvilliers</option>
+  <option value="1285">Orveau</option>
+  <option value="1286">Jambville</option>
+                            <option value="1287">Paris 3e  Arrondissement</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6 input-box">
+                    <label class="label-text">Recherche par type de restaurant</label>
+                    <div class="form-group user-chosen-select-container">
+                        <select class="user-chosen-select">
+                            <option value="0">Sélectionner un type</option>
+                            <option value="1">Restaurant</option>
+                            <option value="2">Bistronomique</option>
+                            <option value="3">Gastronomique</option>
+                            <option value="4">Coffee Shop</option>
+                            <option value="5">Salon de thé alternatif</option>
+                            <option value="6">Bistrot</option>
+                            <option value="7">Epicerie Fine + Cave à vins</option>
+                            <option value="8">Italien</option>
+                            <option value="9">Crêperie</option>
+                            <option value="10">International</option>
+                            <option value="11">Pizzeria</option>
+                            <option value="12">Sandwicherie</option>
+                            <option value="13">Sandwicherie</option>
+                            <option value="14">Japonais</option>
+                            <option value="15">Brasserie</option>
+                            <option value="16">Autre/Non précisé</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-12 input-box">
+                    <div class="pb-4">
+                        <h3 class="font-size-16 font-weight-semi-bold">Filtrer par notes</h3>
+                        <ul class="custom-radio row pt-3">
+                            <li class="d-flex align-items-center col-lg-2 pt-0">
+                                <label class="radio-label">
+                                    <input type="radio" checked="checked" name="rating-radio">
+                                    <span class="radio-mark"></span>
+                                </label>
+                                <div class="font-weight-medium">
+                                    Tous
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center col-lg-2 pt-0">
+                                <label class="radio-label">
+                                    <input type="radio" name="rating-radio">
+                                    <span class="radio-mark"></span>
+                                </label>
+                                <div class="stars">
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center col-lg-2 pt-0">
+                                <label class="radio-label">
+                                    <input type="radio" name="rating-radio">
+                                    <span class="radio-mark"></span>
+                                </label>
+                                <div class="stars">
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center col-lg-2 pt-0">
+                                <label class="radio-label">
+                                    <input type="radio" name="rating-radio">
+                                    <span class="radio-mark"></span>
+                                </label>
+                                <div class="stars">
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center col-lg-2 pt-0">
+                                <label class="radio-label">
+                                    <input type="radio" name="rating-radio">
+                                    <span class="radio-mark"></span>
+                                </label>
+                                <div class="stars">
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center col-lg-2 pt-0">
+                                <label class="radio-label">
+                                    <input type="radio" name="rating-radio">
+                                    <span class="radio-mark"></span>
+                                </label>
+                                <div class="stars">
+                                    <span class="la la-star"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                    <span class="la la-star-o text-gray"></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- end pb-4 -->
+
+                </div>
+                <div class="col-lg-12 btn-box padding-top-30px">
+                    <button type="submit" class="theme-btn gradient-btn border-0">
+                        Filtrer <i class="la la-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </form>
+            <div class="section-block"></div>
+        </div><!-- end filter-bar-wrap -->
+        <div class="row pt-4 padding-left-30px padding-right-30px">
+            {% for restaurant in listRestaurants %}
+                <div class="col-lg-12" id="divResto{{ restaurant[0] }}">
+                    <div class="card-item card-item-list">
+                        <div class="card-content">
+                            <h4 class="card-title pt-3">
+                                <a href="listing-details.html">{{ restaurant[2] }}</a>
+
+                            </h4>
+                            <p class="card-sub"><a href="#"><i
+                                    class="la la-map-marker mr-1 text-color-2"></i>{{ restaurant[3] }} {{ restaurant[4] }}, {{ restaurant[5] }} {{ restaurant[6] }}
+                            </a></p>
+                            <p class="card-sub"><i
+                                    class="la la-cutlery mr-1 listing-icon text-color-2"></i>{{ restaurant[7] }}, {{ restaurant[10] }}
+                            </p>
+                            <ul class="listing-meta d-flex align-items-center">
+                                <li class="d-flex align-items-center">
+                                    <span class="rate-text">Note: </span>
+                                    <span class="rate flex-shrink-0">{{ restaurant[15] }}</span>
+                                </li>
+                                <li class="d-flex align-items-center">
+
+                                <span class="price-range" data-toggle="tooltip" data-placement="top" title=""
+                                      data-original-title="Pricey" id="price{{ restaurant[0] }}">
+
+                                </span>
+
+                                </li>
+                                <li>
+                                    <form method="POST" action="/update">
+                                <select class="user-chosen-select" id="note" onchange="choice1(this)" name="note">
+                                <option value=0" selected>Sélectionner une note</option>
+                                <option value="1">★</option>
+                                <option value="2">★★</option>
+                                <option value="3">★★★</option>
+                                <option value="4">★★★★</option>
+                                <option value="5">★★★★★</option>
+                            </select>
+                                    <input type="hidden" name="id" value="{{ restaurant[0] }}"/>
+                                    <input type="submit" name="btnOK" value="ok"/>
+                                    </form>
+                                    <script>
+                                      function choice1(select) {
+}
+                                    </script>
+
+                                </li>
+
+
+
+                            </ul>
+
+
+                            <!-- rating.js file -->
+                            <!-- rating.js file -->
+                            <script src="{{ url_for('static', filename = 'js/jquery-3.4.1.min.js') }}"></script>
+
+                            <ul class="info-list padding-top-20px">
+                                <li><span class="la la-clock-o icon"></span>
+                                    {{ restaurant[11] }}
+                                </li>
+                                <li><span class="la la-link icon"></span>
+                                    <a href="#">{{ restaurant[13] }}</a>
+                                </li>
+                                <li><span class="la la-phone icon"></span>
+                                    <a href="#">{{ restaurant[8] }}</a>
+                                </li>
+                                <li><span class="la la-envelope-open-o icon"></span>
+                                    <a href="#">{{ restaurant[9] }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- end card-item -->
+                </div>
+                <script>
+                $(document).ready(function(){
+      $("#divResto{{ restaurant[0] }}").hover(function() {
+          //$(this).append("<div class='line'></div>");
+           //alert({{ restaurant[1] }})
+          //alert()
+
+
+      }, function() {
+          $(this).children('.line').remove();
+      });
+});
+                </script>
+            {% endfor %}
+        </div><!-- end row -->
+        <div class="row">
+            <div class="col-lg-12 pt-3 text-center pb-5">
+                <div class="pagination-wrapper d-inline-block">
+                    <div class="section-pagination">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination flex-wrap justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link page-link-first" href="#"><i
+                                            class="la la-long-arrow-left mr-1"></i> Première</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true"><i class="la la-angle-left"></i></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link page-link-active" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true"><i class="la la-angle-right"></i></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link page-link-last" href="#">Dernière <i
+                                            class="la la-long-arrow-right ml-1"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- end section-pagination -->
+                </div>
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+    </div><!-- end card-area -->
+    <div class="w-50 home-map">
+        <div class="map-container height-980">
+            <div id="myMap"></div>
+            <a href="#" class="enable-scroll" title="Enable or disable scrolling on map">
+                <i class="la la-mouse mr-2"></i>Activer Scrolling
+            </a>
+        </div>
+    </div><!-- Home Map End -->
+</section>
+<!-- ================================
+       END FULL SCREEN AREA
+================================= -->
+
+<!-- ================================
+       START FOOTER AREA
+================================= -->
+<section class="footer-area bg-gradient-gray padding-top-30px padding-bottom-30px position-relative">
+    <span class="circle-bg circle-bg-3 position-absolute"></span>
+    <span class="circle-bg circle-bg-4 position-absolute"></span>
+    <span class="circle-bg circle-bg-5 position-absolute"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cta-content d-flex align-items-center justify-content-between p-0">
+                    <div class="section-heading">
+                        <h2 class="sec__title mb-0 font-size-24 line-height-30">Don't miss your monthly offer</h2>
+                        <p class="sec__desc font-size-16">Subscribe to get latest updates and information.</p>
+                    </div><!-- end section-heading -->
+                    <form method="post" class="form-box">
+                        <div class="form-group mb-0">
+                            <span class="la la-envelope-o form-icon"></span>
+                            <input class="form-control form-control-styled form-control-long" type="email"
+                                   placeholder="Enter your email">
+                            <p class="font-size-12 font-weight-medium pt-1"><i class="la la-lock mr-1"></i>Your are 100%
+                                protected</p>
+                            <button class="theme-btn gradient-btn subscribe-btn input-btn-append border-0"
+                                    type="submit">Subscribe <i class="la la-arrow-right ml-1"></i></button>
+                        </div>
+                    </form>
+                </div><!-- end cta-content -->
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+        <div class="section-block-2 margin-top-30px margin-bottom-40px"></div>
+        <div class="row">
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <div class="footer-logo">
+                        <a href="index-2.html" class="foot-logo"><img
+                                src="{{ url_for('static', filename = 'images/logo-black.png') }}" alt="logo"></a>
+                    </div><!-- end footer-logo -->
+                    <p class="footer__desc">
+                        Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros culpa
+                        officia deserunt mollit.
+                    </p>
+                    <p class="footer__desc">
+                        <a href="#" class="btn-text">View on the map <i class="la la-arrow-right icon"></i></a>
+                    </p>
+                </div><!-- end footer-item -->
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4 class="footer__title">Quick Links</h4>
+                    <div class="stroke-shape mb-3"></div>
+                    <ul class="list-items">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#loginModal">Log In</a></li>
+                        <li><a href="add-listing.html">Add Listing</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div><!-- end footer-item -->
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4 class="footer__title">Categories</h4>
+                    <div class="stroke-shape mb-3"></div>
+                    <ul class="list-items">
+                        <li><a href="#">Shops</a></li>
+                        <li><a href="#">Hotels</a></li>
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Bars</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Fitness</a></li>
+                    </ul>
+                </div><!-- end footer-item -->
+            </div><!-- end col-lg-3 -->
+            <div class="col-lg-3 responsive-column">
+                <div class="footer-item">
+                    <h4 class="footer__title">Contact with Us</h4>
+                    <div class="stroke-shape mb-3"></div>
+                    <ul class="list-items contact-links">
+                        <li><span class="d-block text-color mb-1"><i
+                                class="la la-map mr-1 text-color-2"></i>Address:</span> 12345 Little Baker St, Melbourne
+                        </li>
+                        <li><span class="d-block text-color mb-1"><i
+                                class="la la-phone mr-1 text-color-2"></i>Phone:</span><a href="#">+ 61 23 8093 3400</a>
+                        </li>
+                        <li><span class="d-block text-color mb-1"><i class="la la-envelope mr-1 text-color-2"></i>Email:</span><a
+                                href="#">listhub@gmail.com</a></li>
+                    </ul>
+                </div><!-- end footer-item -->
+            </div><!-- end col-lg-3 -->
+        </div><!-- end row -->
+        <div class="row pt-4 align-items-center footer-action-wrap">
+            <div class="col-lg-4">
+                <ul class="social-profile social-profile-colored">
+                    <li><a href="#" class="facebook-bg"><i class="lab la-facebook-f"></i></a></li>
+                    <li><a href="#" class="twitter-bg"><i class="lab la-twitter"></i></a></li>
+                    <li><a href="#" class="instagram-bg"><i class="lab la-instagram"></i></a></li>
+                    <li><a href="#" class="dribbble-bg"><i class="la la-dribbble"></i></a></li>
+                    <li><a href="#" class="behance-bg"><i class="lab la-behance"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-lg-8">
+                <ul class="list-items term-list text-right">
+                    <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-block-2 margin-top-30px margin-bottom-30px"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="copy-right d-flex align-items-center justify-content-between">
+                    <p class="copy__desc">
+                        &copy; Copyright Listhub
+                        <script> document.write(new Date().getFullYear()); </script>
+                        . Made with
+                        <span class="la la-heart-o"></span> by <a
+                            href="https://themeforest.net/user/techydevs/portfolio">TechyDevs</a>
+                    </p>
+                    <div class="footer-chosen-container user-chosen-select-container d-flex align-items-center justify-content-end">
+                        <div class="mr-2">
+                            <select class="user-chosen-select">
+                                <option value=1" selected>English</option>
+                                <option value="2">Espanol</option>
+                                <option value="3">Deutsch</option>
+                                <option value="4">Türkçe</option>
+                                <option value="5">Polski</option>
+                                <option value="6">Português</option>
+                                <option value="7">Italiano</option>
+                                <option value="8">Dansk</option>
+                                <option value="9">French</option>
+                                <option value="10">German</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select class="user-chosen-select">
+                                <option value="1">Argentina</option>
+                                <option value="2">Australia</option>
+                                <option value="3">Canada</option>
+                                <option value="4">Chile</option>
+                                <option value="5">Czech Republic</option>
+                                <option value="6">France</option>
+                                <option value="7">Germany</option>
+                                <option value="8">Italy</option>
+                                <option value="9">Japan</option>
+                                <option value="10">Mexico</option>
+                                <option value="11">New Zealand</option>
+                                <option value="12">Spain</option>
+                                <option value="13">Turkey</option>
+                                <option value="14">United Kingdom</option>
+                                <option value="15" selected>United States</option>
+                            </select>
+                        </div>
+                    </div>
+                </div><!-- end copy-right -->
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end footer-area -->
+<!-- ================================
+       START FOOTER AREA
+================================= -->
+
+<!-- start back-to-top -->
+<div id="back-to-top">
+    <i class="la la-arrow-up" title="Go top"></i>
+</div>
+<!-- end back-to-top -->
+
+<!-- Modal -->
+<div class="modal fade modal-container login-form" id="loginModal" tabindex="-1" role="dialog"
+     aria-labelledby="loginModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header align-items-center mh-bg">
+                <h5 class="modal-title" id="loginModalTitle">Hey, Welcome back!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" class="form-box">
+                    <div class="input-box">
+                        <label class="label-text">Username or email</label>
+                        <div class="form-group">
+                            <span class="la la-user form-icon"></span>
+                            <input class="form-control form-control-styled" type="text" name="text"
+                                   placeholder="Username or email address">
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label class="label-text">Password</label>
+                        <div class="form-group">
+                            <span class="la la-lock form-icon"></span>
+                            <input class="form-control form-control-styled" type="text" name="text"
+                                   placeholder="Enter password">
+                        </div>
+                    </div>
+                    <div class="input-box d-flex align-items-center justify-content-between pb-4 user-action-meta">
+                        <div class="custom-checkbox">
+                            <input type="checkbox" id="keepMeSignedChb">
+                            <label for="keepMeSignedChb" class="font-size-14">Keep me signed in</label>
+                        </div>
+                        <a href="javascript:void(0)" class="margin-bottom-10px lost-pass-btn font-size-14">Lost
+                            Password?</a>
+                    </div>
+                    <div class="btn-box">
+                        <button type="submit" class="theme-btn gradient-btn w-100">
+                            <i class="la la-sign-in mr-1"></i> Login to Account
+                        </button>
+                        <p class="sub-text-box text-right pt-1 font-weight-medium font-size-14">
+                            New to Listhub? <a class="text-color-2 signup-btn" href="javascript:void(0)">Create
+                            account</a>
+                        </p>
+                    </div>
+                    <div class="icon-element font-size-16 font-weight-semi-bold mt-5 mb-4 mx-auto">
+                        OR
+                    </div>
+                    <div class="text-center">
+                        <p class="font-size-15 font-weight-medium">Login with your social network</p>
+                        <ul class="social-profile social-profile-colored py-3">
+                            <li>
+                                <a href="#" class="google-bg mx-1" data-toggle="tooltip" data-placement="top"
+                                   title="Google">
+                                    <i class="lab la-google"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook-bg mx-1" data-toggle="tooltip" data-placement="top"
+                                   title="Facebook">
+                                    <i class="lab la-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="twitter-bg mx-1" data-toggle="tooltip" data-placement="top"
+                                   title="Twitter">
+                                    <i class="lab la-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="instagram-bg mx-1" data-toggle="tooltip" data-placement="top"
+                                   title="Instagram">
+                                    <i class="lab la-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-container signup-form" id="signUpModal" tabindex="-1" role="dialog"
+     aria-labelledby="signUpModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header align-items-center mh-bg-2">
+                <h5 class="modal-title" id="signUpModalTitle">Welcome! create your listhub account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" class="form-box">
+                    <div class="input-box">
+                        <label class="label-text">Username</label>
+                        <div class="form-group">
+                            <span class="la la-user form-icon"></span>
+                            <input class="form-control form-control-styled" type="text" name="text"
+                                   placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label class="label-text">Email</label>
+                        <div class="form-group">
+                            <span class="la la-envelope form-icon"></span>
+                            <input class="form-control form-control-styled" type="email" name="text"
+                                   placeholder="Email address">
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <label class="label-text">Password</label>
+                        <div class="form-group">
+                            <span class="la la-lock form-icon"></span>
+                            <input class="form-control form-control-styled" type="text" name="text"
+                                   placeholder="Enter password">
+                        </div>
+                        <p class="font-size-14 mt-n2">Your password must be at least 6 characters long and must contain
+                            letters, numbers and special characters. Cannot contain whitespace.</p>
+                    </div>
+                    <div class="input-box py-4 user-action-meta">
+                        <div class="custom-checkbox">
+                            <input type="checkbox" id="agreeChb">
+                            <label for="agreeChb" class="font-size-14">By signing up, you agree to our <a
+                                    href="privacy-policy.html" class="text-color-2">Privacy Policy.</a></label>
+                        </div>
+                    </div>
+                    <div class="btn-box">
+                        <button type="submit" class="theme-btn gradient-btn w-100">
+                            <i class="la la-user-plus mr-1"></i> Register Account
+                        </button>
+                        <p class="sub-text-box text-right pt-1 font-weight-medium font-size-14">
+                            Already on Listhub? <a class="text-color-2 login-btn" href="javascript:void(0)">Log in</a>
+                        </p>
+                    </div>
+                    <div class="icon-element font-size-16 font-weight-semi-bold mt-5 mb-4 mx-auto">
+                        OR
+                    </div>
+                    <div class="text-center">
+                        <p class="font-size-15 font-weight-medium">Connect with social network</p>
+                        <ul class="social-profile social-profile-colored py-3">
+                            <li>
+                                <a href="#" class="google-bg mx-1" data-toggle="tooltip" data-placement="top"
+                                   title="Google">
+                                    <i class="lab la-google"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="facebook-bg mx-1" data-toggle="tooltip" data-placement="top"
+                                   title="Facebook">
+                                    <i class="lab la-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="twitter-bg mx-1" data-toggle="tooltip" data-placement="top"
+                                   title="Twitter">
+                                    <i class="lab la-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="instagram-bg mx-1" data-toggle="tooltip" data-placement="top"
+                                   title="Instagram">
+                                    <i class="lab la-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="font-size-15 pb-3">Don't worry, we never any post to your social profile.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-container recover-form" id="recoverModal" tabindex="-1" role="dialog"
+     aria-labelledby="recoverModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header align-items-center mh-bg">
+                <h5 class="modal-title" id="recoverModalTitle">Reset password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="la la-times-circle"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="font-size-15 font-weight-medium pb-3">
+                    Enter your username or email to reset your password.
+                    You will receive an email with instructions on how to reset your password. If you are experiencing
+                    problems
+                    resetting your password <a href="contact.html" class="text-color-2">contact us</a> or <a href="#"
+                                                                                                             class="text-color-2">send
+                    us an email</a>
+                </p>
+                <form method="post" class="form-box">
+                    <div class="input-box">
+                        <label class="label-text">Username or email</label>
+                        <div class="form-group">
+                            <span class="la la-user form-icon"></span>
+                            <input class="form-control form-control-styled" type="text" name="text"
+                                   placeholder="Username or email address">
+                        </div>
+                    </div>
+                    <div class="btn-box">
+                        <button type="submit" class="theme-btn gradient-btn w-100">
+                            Get New Password <i class="la la-arrow-right ml-1"></i>
+                        </button>
+                        <p class="sub-text-box text-right pt-1 font-weight-medium font-size-14">
+                            Not a member? <a class="text-color-2 signup-btn" href="javascript:void(0)">Create
+                            account</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Template JS Files -->
+<script src="{{ url_for('static', filename = 'js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/jquery-ui.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/animated-headline.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/chosen.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/moment.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/datedropper.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/waypoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/jquery.counterup.min.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKC41-eGco_z-G0QtC_2CTPRgjMwdGkoo"></script>
+<script src="{{ url_for('static', filename = 'js/markerclusterer.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/map-infobox.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/rating-script.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/jquery.lazy.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/main.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/rating.min.js') }}"></script>
+
+
+<script type="text/javascript">
+   ! function(e) {
+    "use strict";
+    var a = document.getElementById("myMap");
+    void 0 !== a && null != a && google.maps.event.addDomListener(window, "load", function (listener) {
+
+        var
+            s = new google.maps.Map(document.getElementById("myMap"), {
+                zoom: 11,
+                scrollwheel: !1,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoomControl: !0,
+                mapTypeControl: !1,
+                fullscreenControl: !0,
+                styles: [{
+                    featureType: "water",
+                    elementType: "geometry",
+                    stylers: [{
+                        color: "#e9e9e9"
+                    }, {
+                        lightness: 17
+                    }]
+                }, {
+                    featureType: "landscape",
+                    elementType: "geometry",
+                    stylers: [{
+                        color: "#f5f5f5"
+                    }, {
+                        lightness: 20
+                    }]
+                }, {
+                    featureType: "road.highway",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                        color: "#ffffff"
+                    }, {
+                        lightness: 17
+                    }]
+                }, {
+                    featureType: "road.highway",
+                    elementType: "geometry.stroke",
+                    stylers: [{
+                        color: "#ffffff"
+                    }, {
+                        lightness: 29
+                    }, {
+                        weight: .2
+                    }]
+                }, {
+                    featureType: "road.arterial",
+                    elementType: "geometry",
+                    stylers: [{
+                        color: "#ffffff"
+                    }, {
+                        lightness: 18
+                    }]
+                }, {
+                    featureType: "road.local",
+                    elementType: "geometry",
+                    stylers: [{
+                        color: "#ffffff"
+                    }, {
+                        lightness: 16
+                    }]
+                }, {
+                    featureType: "poi",
+                    elementType: "geometry",
+                    stylers: [{
+                        color: "#f5f5f5"
+                    }, {
+                        lightness: 21
+                    }]
+                }, {
+                    featureType: "poi.park",
+                    elementType: "geometry",
+                    stylers: [{
+                        color: "#dedede"
+                    }, {
+                        lightness: 21
+                    }]
+                }, {
+                    elementType: "labels.text.stroke",
+                    stylers: [{
+                        visibility: "on"
+                    }, {
+                        color: "#ffffff"
+                    }, {
+                        lightness: 16
+                    }]
+                }, {
+                    elementType: "labels.text.fill",
+                    stylers: [{
+                        saturation: 36
+                    }, {
+                        color: "#333333"
+                    }, {
+                        lightness: 40
+                    }]
+                }, {
+                    elementType: "labels.icon",
+                    stylers: [{
+                        visibility: "off"
+                    }]
+                }, {
+                    featureType: "transit",
+                    elementType: "geometry",
+                    stylers: [{
+                        color: "#f2f2f2"
+                    }, {
+                        lightness: 19
+                    }]
+                }, {
+                    featureType: "administrative",
+                    elementType: "geometry.fill",
+                    stylers: [{
+                        color: "#fefefe"
+                    }, {
+                        lightness: 20
+                    }]
+                }, {
+                    featureType: "administrative",
+                    elementType: "geometry.stroke",
+                    stylers: [{
+                        color: "#fefefe"
+                    }, {
+                        lightness: 17
+                    }, {
+                        weight: 1.2
+                    }]
+                }]
+            });
+        if (navigator.geolocation) {
+            var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+     navigator.geolocation.getCurrentPosition(function (position) {
+         var initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+         s.setCenter(initialLocation);
+
+        $.ajax({
+        url: "/retrieveData",
+        type: 'GET',
+        cache: false,
+        success: function (result) {
+            console.log(result[14])
+            if (result) {
+                var data_length = result.length;
+                var markers = []
+                var marker, i;
+for ( i = 0; i < data_length; i++) {
+if(result[i][14]!==null) {
+    var myStr = result[i][14].toString()
+    var strArray = myStr.split(",")
+ const svgMarker = {
+    path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+    fillColor: "blue",
+    fillOpacity: 0.6,
+    strokeWeight: 0,
+    rotation: 0,
+    scale: 2,
+    anchor: new google.maps.Point(15, 30),
+  };
+    marker = new google.maps.Marker({
+        position: new google.maps.LatLng(strArray[0], strArray[1]),
+        map: s,
+        content:'<div class="map-info-popup">' +
+                        '<div class="item-popup-box"><span class="close-info"><i class="la la-close"></i></span><a href="#" class="map-badge"></a>' +
+                        '<a href="" class="map-img-box position-relative d-block"> <div class="item-list-content position-relative">' +
+                        '<h4 class="mb-2"><a href="">'+result[i][2]+'</a></h4><div class="item-ratting mb-3" data-star-rating=""><span class="map-review-count">Note: ' +
+                        result[i][15]+'</span></div><span class="location-info d-block mb-2"><i class="la la-map-marker"></i>'+result[i][3]+result[i][4]+' ,'+result[i][5]+' '+result[i][6]+'</span>' +
+                        '<span class="item-call d-block mb-2"><i class="la la-phone"></i><a href="#">'+result[i][8]+'</a></span><span class="item-call d-block">' +
+                        '<i class="la la-clock-o"></i>'+result[i][11]+'</span></div></div></div>'
+
+    });
+    markers.push(marker);
+
+var markerClusterer = new MarkerClusterer(s, markers, {
+    imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m',
+    zoom:5
+});// Change styles after cluster is created
+const styles = markerClusterer.getStyles();
+for (let i=0; i<styles.length; i++) {
+  styles[i].textColor = "white";
+  styles[i].textSize = 18;
+}
+    var infowindow = new google.maps.InfoWindow({
+
+
+                  });
+
+google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(this.content);
+            infowindow.open(s, this);
+          });
+}
+}
+
+            }
+
+        },
+        error: function () {
+            alert("No");
+        }
+    });
+     }, error => console.log(error),
+{enableHighAccuracy: true});
+
+
+ }
+
+    })
+}(this.jQuery);
+</script>
+
+</body>
+
+</html>

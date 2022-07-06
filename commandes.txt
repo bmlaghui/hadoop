@@ -1,0 +1,26 @@
+create database Restaurants ;
+use Restaurants;
+
+CREATE TABLE IF NOT EXISTS restaurants(idRestaurant int, siretRestaurant String, nomRestaurant String, adresseRestaurant String,
+ complementAdresseRestaurant String, codePostalRestaurant int, communeRestaurant String, typeActiviteRestaurant String, telephoneRestarant String,
+ emailRestaurant String, specialiteRestaurant String, horairesRestaurant String, mobiliteReduiteRestaurant String, siteWebRestaurant String, geometryRestaurant String, note decimal) COMMENT 'A table to store restaurants records.'
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+   "separatorChar" = ";"
+)
+tblproperties ("skip.header.line.count"="1");
+;
+
+
+
+LOAD DATA LOCAL INPATH '/home/cloudera/restaurants.csv' OVERWRITE INTO TABLE restaurants;
+
+select * from restaurants
+
+CREATE TABLE IF NOT EXISTS restaurants(idRestaurant int, siretRestaurant String, nomRestaurant String, adresseRestaurant String,
+ complementAdresseRestaurant String, codePostalRestaurant int, communeRestaurant String, typeActiviteRestaurant String, telephoneRestarant String,
+ emailRestaurant String, specialiteRestaurant String, horairesRestaurant String, mobiliteReduiteRestaurant String, siteWebRestaurant String, geometryRestaurant String) ;
+
+
+LOAD DATA LOCAL INPATH '/home/cloudera/restaurants.csv'  INTO TABLE restaurants;
+
